@@ -12,4 +12,10 @@
 echo "Setuid files:"
 echo "============="
 find / -type f -executable -perm -4000 -ls 2>/dev/null | sort -k 3
+echo "Setgid files:"
+echo "============="
+find / -type f -executable -perm -2000 -ls 2>/dev/null | sort -k 3
+echo "Task 2"
+echo "============="
+find $HOME -type f -exec ls -alh --block-size=M {} \; | sort -hr -k5 | head -n 10 | awk '{print $5, $3 ,$9}'
 echo ""
